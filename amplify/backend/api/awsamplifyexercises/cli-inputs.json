@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/employees": {
+      "name": "/employees",
+      "lambdaFunction": "awsamplifyexerciseemployee",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/users": {
+      "name": "/users",
+      "lambdaFunction": "awsamplifyexerciseuser",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
