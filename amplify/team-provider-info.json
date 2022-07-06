@@ -9,18 +9,36 @@
       "UnauthRoleName": "amplify-awsamplifyexercies-dev-163000-unauthRole",
       "StackName": "amplify-awsamplifyexercies-dev-163000",
       "StackId": "arn:aws:cloudformation:us-east-1:475469545159:stack/amplify-awsamplifyexercies-dev-163000/0dc3ee10-fc45-11ec-a991-0a6c7eefb133",
-      "AmplifyAppId": "d3u8tco2wm09t8"
+      "AmplifyAppId": "d3u8tco2wm09t8",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-awsamplifyexercies-dev-163000-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "function": {
         "awsamplifyexerciseuser": {
           "deploymentBucketName": "amplify-awsamplifyexercies-dev-163000-deployment",
-          "s3Key": "amplify-builds/awsamplifyexerciseuser-37414265514662765174-build.zip"
+          "s3Key": "amplify-builds/awsamplifyexerciseuser-504e6763615a776c4d51-build.zip",
+          "dbHost": "queenie.db.elephantsql.com",
+          "dbName": "krclxzgk",
+          "dbPassword": "WdL01QuPvrAsA-475CIPGcH4D7naUO80",
+          "dbPort": "5432",
+          "dbUser": "krclxzgk"
         },
         "awsamplifyexerciseemployee": {
           "deploymentBucketName": "amplify-awsamplifyexercies-dev-163000-deployment",
-          "s3Key": "amplify-builds/awsamplifyexerciseemployee-78502f504a73464d436e-build.zip"
+          "s3Key": "amplify-builds/awsamplifyexerciseemployee-4169744f563150495367-build.zip",
+          "dbHost": "queenie.db.elephantsql.com",
+          "dbName": "krclxzgk",
+          "dbPassword": "WdL01QuPvrAsA-475CIPGcH4D7naUO80",
+          "dbPort": "5432",
+          "dbUser": "krclxzgk"
+        },
+        "awsamplifyexerciesb55d69fdPostConfirmation": {
+          "deploymentBucketName": "amplify-awsamplifyexercies-dev-163000-deployment",
+          "s3Key": "amplify-builds/awsamplifyexerciesb55d69fdPostConfirmation-715755726f3247375a62-build.zip"
         }
+      },
+      "auth": {
+        "awsamplifyexerciesb55d69fd": {}
       }
     }
   }

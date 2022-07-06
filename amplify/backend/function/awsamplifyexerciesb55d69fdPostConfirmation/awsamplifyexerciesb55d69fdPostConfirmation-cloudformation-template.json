@@ -2,33 +2,46 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"8.3.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
-    "CloudWatchRule": {
+    "GROUP": {
       "Type": "String",
-      "Default": "NONE",
-      "Description": " Schedule Expression"
+      "Default": ""
     },
-    "deploymentBucketName": {
-      "Type": "String"
+    "modules": {
+      "Type": "String",
+      "Default": "",
+      "Description": "Comma-delimited list of modules to be executed by a lambda trigger. Sent to resource as an env variable."
+    },
+    "resourceName": {
+      "Type": "String",
+      "Default": ""
+    },
+    "trigger": {
+      "Type": "String",
+      "Default": "true"
+    },
+    "functionName": {
+      "Type": "String",
+      "Default": ""
+    },
+    "roleName": {
+      "Type": "String",
+      "Default": ""
+    },
+    "parentResource": {
+      "Type": "String",
+      "Default": ""
+    },
+    "parentStack": {
+      "Type": "String",
+      "Default": ""
     },
     "env": {
       "Type": "String"
     },
+    "deploymentBucketName": {
+      "Type": "String"
+    },
     "s3Key": {
-      "Type": "String"
-    },
-    "dbHost": {
-      "Type": "String"
-    },
-    "dbName": {
-      "Type": "String"
-    },
-    "dbPassword": {
-      "Type": "String"
-    },
-    "dbPort": {
-      "Type": "String"
-    },
-    "dbUser": {
       "Type": "String"
     }
   },
@@ -50,24 +63,16 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "awsamplifyexerciseuser",
+            "awsamplifyexerciesb55d69fdPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "awsamplifyexerciseuser",
+                  "awsamplifyexerciesb55d69fdPostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -82,23 +87,14 @@
             "ENV": {
               "Ref": "env"
             },
+            "MODULES": {
+              "Ref": "modules"
+            },
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "DB_HOST": {
-              "Ref": "dbHost"
-            },
-            "DB_NAME": {
-              "Ref": "dbName"
-            },
-            "DB_PASSWORD": {
-              "Ref": "dbPassword"
-            },
-            "DB_PORT": {
-              "Ref": "dbPort"
-            },
-            "DB_USER": {
-              "Ref": "dbUser"
+            "GROUP": {
+              "Ref": "GROUP"
             }
           }
         },
@@ -109,8 +105,15 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Layers": [],
-        "Timeout": 25
+        "Timeout": 25,
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        }
       }
     },
     "LambdaExecutionRole": {
@@ -119,12 +122,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "awsamplifyexerciesLambdaRoledc8f4653",
+            "awsamplifyexerciesb55d69fdPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "awsamplifyexerciesLambdaRoledc8f4653",
+                  "awsamplifyexerciesb55d69fdPostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -210,14 +213,14 @@
         ]
       }
     },
-    "Region": {
-      "Value": {
-        "Ref": "AWS::Region"
-      }
-    },
     "LambdaExecutionRole": {
       "Value": {
         "Ref": "LambdaExecutionRole"
+      }
+    },
+    "Region": {
+      "Value": {
+        "Ref": "AWS::Region"
       }
     }
   }
